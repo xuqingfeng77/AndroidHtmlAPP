@@ -9,6 +9,10 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+<<<<<<< HEAD
+=======
+            <option value="$PROJECT_DIR$/app" />
+>>>>>>> bc866329c2c9ff629334523a33c38b14233e255e
           </set>
         </option>
       </GradleProjectSettings>
