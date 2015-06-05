@@ -51,6 +51,10 @@ public class MainActivity extends Activity implements View.OnClickListener {
         // Inflate the menu; this adds items to the action bar if it is present.
         // Inflate the menu; this adds items to the action bar if it is present.
         // Inflate the menu; this adds items to the action bar if it is present.
+        // Inflate the menu; this adds items to the action bar if it is present.
+        // Inflate the menu; this adds items to the action bar if it is present.
+        // Inflate the menu; this adds items to the action bar if it is present.
+        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
