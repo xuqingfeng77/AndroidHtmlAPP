@@ -1,36 +1,29 @@
 package com.example.administrator.myapplication150512;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.KeyEvent;
-import android.view.MotionEvent;
-import android.view.View;
 import android.view.Window;
-import android.view.View.OnTouchListener;
+import android.webkit.JsResult;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
 
 /**
- * 浏览器
+ * jquery and java
  *
  */
-public class WebViewApp extends Activity {
+public class WebViewAppTwo extends Activity {
 
 	/** webview控件 */
 	private WebView webView;
 
 	/** 当前url地址 */
 	private String browserUrl = "file:///android_asset/error.html";
-	private String browserUrl2 ="https://www.baidu.com/";
+	private String browserUrl2 ="http://www.baidu.com/";
+	private Context mContext;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +32,8 @@ public class WebViewApp extends Activity {
 		// getWindow().requestFeature(Window.FEATURE_PROGRESS);// 用title bar做进度条
 		// requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);// 用title
 		setContentView(R.layout.browser_layout);
+		mContext=this;
+
 		initWebView();
 	}
 
@@ -101,20 +96,27 @@ public class WebViewApp extends Activity {
 			/** 设置进度条 */
 			public void onProgressChanged(WebView view, int newProgress) {
 				// 设置标题栏的进度条的百分比
-				WebViewApp.this.getWindow().setFeatureInt(
+				WebViewAppTwo.this.getWindow().setFeatureInt(
 						Window.FEATURE_PROGRESS, newProgress * 100);
 				super.onProgressChanged(view, newProgress);
 			}
 
 			/** 设置标题 */
 			public void onReceivedTitle(WebView view, String title) {
-				WebViewApp.this.setTitle(title);
+				WebViewAppTwo.this.setTitle(title);
 				super.onReceivedTitle(view, title);
 			}
+			@Override
+			public boolean onJsAlert(WebView view, String url, String message,
+									 JsResult result)
+			{
+				// TODO Auto-generated method stub
+				return super.onJsAlert(view, url, message, result);
+			}
+
 		});
-		webView.addJavascriptInterface(new RemoteInvokeService(WebViewApp.this,
-				webView, browserUrl2), "js_invoke");
-		webView.loadUrl(browserUrl2);
+		webView.addJavascriptInterface(new AndroidToastForJs(mContext), "JavaScriptInterface");
+		webView.loadUrl(browserUrl);
 	}
 
 	/**
