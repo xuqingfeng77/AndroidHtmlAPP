@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.JavascriptInterface;
 import android.webkit.JsResult;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
@@ -91,6 +92,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
          * This is not called on the UI thread. Post a runnable to invoke
          * loadUrl on the UI thread.
          */
+        @JavascriptInterface
         public void clickOnAndroid() {
             mHandler.post(new Runnable() {
                 public void run() {

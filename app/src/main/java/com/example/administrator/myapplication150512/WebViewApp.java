@@ -114,7 +114,7 @@ public class WebViewApp extends Activity {
 		});
 		webView.addJavascriptInterface(new RemoteInvokeService(WebViewApp.this,
 				webView, browserUrl2), "js_invoke");
-		webView.loadUrl(browserUrl2);
+		webView.loadUrl(browserUrl);
 	}
 
 	/**
