@@ -11,6 +11,7 @@ public class RemoteInvokeService{
 	private String url;
 	private WebView webView;
 	private String browserUrl2 ="https://www.baidu.com/";
+
 	public RemoteInvokeService(Activity paramActivity, WebView paramWebView,
 			String paramString1) {
 		this.context = paramActivity;
@@ -19,6 +20,7 @@ public class RemoteInvokeService{
 	}
 	// 如果target 大于等于API 17，则需要加上如下注解
 	@JavascriptInterface
+
 	public void goNetSetting() {
 		this.context.startActivityForResult(new Intent(
 				"android.settings.WIRELESS_SETTINGS"), 0);
@@ -26,7 +28,8 @@ public class RemoteInvokeService{
 	// 如果target 大于等于API 17，则需要加上如下注解
 	@JavascriptInterface
 	public void reload() {
-		Toast.makeText(context,"回调打开网页成功",Toast.LENGTH_SHORT).show();
+		Toast.makeText(context, "回调打开网页成功", Toast.LENGTH_SHORT).show();
 		this.webView.loadUrl(browserUrl2);
 	}
+
 }
