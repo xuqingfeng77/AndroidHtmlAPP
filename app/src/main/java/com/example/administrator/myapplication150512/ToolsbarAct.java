@@ -1,8 +1,8 @@
 package com.example.administrator.myapplication150512;
 
 import android.app.Activity;
-import android.os.Handler;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,7 +16,7 @@ import android.webkit.WebView;
 import com.example.administrator.myapplication150512.com.test.app.Man;
 import com.google.gson.Gson;
 
-public class MainActivity extends Activity implements View.OnClickListener {
+public class ToolsbarAct extends Activity implements View.OnClickListener {
     private static final String LOG_TAG = "WebViewDemo";
     WebView mWebView;
     private Handler mHandler = new Handler();
