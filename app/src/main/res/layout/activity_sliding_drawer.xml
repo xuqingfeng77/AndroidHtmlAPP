@@ -13,10 +13,10 @@
         android:id="@+id/drawer_btn"
         android:layout_width="match_parent"
         android:layout_height="350dp"
-        android:layout_alignParentBottom="true"
-        android:onClick="btn_OnClick"
 
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:textColor="#ffffff"
+        android:text="请滑动我">
 
     </Button>
 
