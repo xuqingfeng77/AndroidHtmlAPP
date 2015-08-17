@@ -28,6 +28,10 @@
             android:name=".SlidingDrawerActivity"
             android:label="@string/title_activity_sliding_drawer" >
         </activity>
+        <activity
+            android:name=".AnimNumAct"
+            android:label="@string/title_activity_anim_num" >
+        </activity>
     </application>
 
 </manifest>

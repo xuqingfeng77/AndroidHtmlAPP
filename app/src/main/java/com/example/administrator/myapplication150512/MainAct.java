@@ -63,7 +63,9 @@ public class MainAct extends Activity   {
               lanuchIntent(WebViewAppTwo.class);
               break;
           case R.id.main_btn_test5:
-              lanuchIntent(SlidingDrawerActivity.class);
+//              lanuchIntent(SlidingDrawerActivity.class);
+              lanuchIntent(AnimNumAct.class);
+
               break;
 
       }
