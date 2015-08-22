@@ -40,6 +40,12 @@
         android:layout_height="wrap_content"
         android:text="test4"
         android:onClick="btn_OnClick"/>
+    <Button
+        android:id="@+id/main_btn_test5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="test5"
+        android:onClick="btn_OnClick"/>
 
 </LinearLayout>
 </ScrollView>
