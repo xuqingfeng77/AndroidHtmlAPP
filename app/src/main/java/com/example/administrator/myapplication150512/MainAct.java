@@ -14,6 +14,9 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.Switch;
+import android.widget.Toast;
+
+import com.example.administrator.myapplication150512.util.PhoneUtil;
 
 public class MainAct extends Activity   {
     private static final String LOG_TAG = "WebViewDemo";
@@ -66,6 +69,7 @@ public class MainAct extends Activity   {
 //              lanuchIntent(SlidingDrawerActivity.class);
               lanuchIntent(AnimNumAct.class);
 
+              Toast.makeText(MainAct.this, PhoneUtil.phoneInfo(),Toast.LENGTH_LONG).show();
               break;
 
       }

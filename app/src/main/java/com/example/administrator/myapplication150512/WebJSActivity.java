@@ -1,10 +1,13 @@
-
 package com.example.administrator.myapplication150512;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.view.View;
 import android.webkit.JavascriptInterface;
 import android.webkit.JsResult;
@@ -15,8 +18,10 @@ import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.Toast;
 
-public class WebJSActivity extends Activity {
+import java.io.File;
 
+public class WebJSActivity extends Activity {
+    public String fileFullName;//照相后的照片的全整路径
     private WebView myWebView = null;
     private Button myButton = null;
 
@@ -101,11 +106,41 @@ public class WebJSActivity extends Activity {
          * Show a toast from the web page
          */
         // 如果target 大于等于API 17，则需要加上如下注解
-         @JavascriptInterface
+        @JavascriptInterface
         public void showToast(String toast) {
             // Toast.makeText(mContext, toast, Toast.LENGTH_SHORT).show();
-            Toast.makeText(mContext, toast, Toast.LENGTH_LONG).show();
+            Toast.makeText(mContext, "takephoto", Toast.LENGTH_LONG).show();
+            takePhoto("testimg" + Math.random() * 1000 + 1 + ".jpg");
         }
-    }
 
+    }
+    /*
+        * 调用摄像头的方法
+        */
+    public void takePhoto(String filename) {
+        System.out.println("----start to take photo2 ----");
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        intent.putExtra(MediaStore.EXTRA_MEDIA_TITLE, "TakePhoto");
+
+        //判断是否有SD卡
+        String sdDir = null;
+        boolean isSDcardExist = Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED);
+        if(isSDcardExist) {
+            sdDir = Environment.getExternalStorageDirectory().getAbsolutePath();
+        } else {
+            sdDir = Environment.getRootDirectory().getAbsolutePath();
+        }
+        //确定相片保存路径
+        String targetDir = sdDir + "/" + "webview_camera";
+        File file = new File(targetDir);
+        if (!file.exists()) {
+            file.mkdirs();
+        }
+        fileFullName = targetDir + "/" + filename;
+        System.out.println("----taking photo fileFullName: " + fileFullName);
+        //初始化并调用摄像头
+        intent.putExtra(MediaStore.Images.Media.MIME_TYPE, "image/jpeg");
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(new File(fileFullName)));
+        startActivityForResult(intent, 1);
+    }
 }
